@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Выпускные виньетки — Онлайн заказ</title>
+  <style>
+    body {
+      font-family: "Segoe UI", sans-serif;
+      margin: 0;
+      padding: 0;
+      color: #fff;
+      background: url("img/Космос.jpg") no-repeat center center fixed;
+      background-size: cover;
+    }
+    header {
+      padding: 40px;
+      text-align: center;
+      text-shadow: 0 0 5px rgba(0,0,0,0.7);
+    }
+    .logo {
+      max-height: 200px;
+      width: auto;
+    }
+    main {
+      padding: 20px;
+      max-width: 700px;
+      margin: 20px auto;
+      border-radius: 12px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.7);
+      color: #fff;
+      background-color: rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+    h2 {
+      color: #aaddff;
+    }
+    form {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 25px;
+      border-radius: 12px;
+      max-width: 600px;
+      margin: 0 auto;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.7);
+      color: #fff;
+    }
+    label {
+      font-weight: bold;
+      margin-top: 15px;
+      display: block;
+      color: #d0e7ff;
+    }
+    input, textarea, select {
+      width: 100%;
+      margin-top: 8px;
+      padding: 10px;
+      border: 1px solid #555;
+      border-radius: 6px;
+      box-sizing: border-box;
+      font-size: 15px;
+      background-color: #fff;
+      color: #000;
+    }
+    input::placeholder, textarea::placeholder {
+      color: #000;
+    }
+    input:focus, textarea:focus, select:focus {
+      outline: 2px solid #3399ff;
+      outline-offset: 0;
+    }
+    select {
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2210%22%20height%3D%227%22%20viewBox%3D%220%200%2010%207%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cpath%20d%3D%22M0%200l5%207%205-7H0z%22%20fill%3D%22000%22/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 10px center;
+      background-size: 10px 7px;
+      cursor: pointer;
+    }
+    button {
+      margin-top: 20px;
+      background-color: #3399ff;
+      color: white;
+      border: none;
+      padding: 14px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #0066cc;
+    }
+    .center-button {
+      text-align: center;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #ccc;
+      background-color: rgba(0, 0, 0, 0.6);
+      max-width: 700px;
+      margin: 20px auto;
+      border-radius: 12px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.7);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="img/logo.png" alt="Логотип" class="logo" />
+    <h1>Онлайн заказ виньеток</h1>
+    <p>Быстро, удобно и без ошибок</p>
+  </header>
+
+  <main>
+    <section>
+      <h2>Как это работает?</h2>
+      <ul>
+        <li>Заполните форму ниже</li>
+        <li>Укажите дизайн, фон, цену и другие пожелания</li>
+        <li>Нажмите "Отправить заказ" — и сообщение откроется в WhatsApp</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Форма заказа</h2>
+      <form id="orderForm" onsubmit="sendToWhatsApp(); return false;">
+        <label>Ваше имя и фамилия (учитель):</label>
+        <input type="text" id="name" placeholder="Например, Айгүл Токтосунова" required />
+
+        <label>Название вашей школы:</label>
+        <input type="text" id="school" placeholder="Например, №75 Средняя школа имени Медета Жаманкулова" required />
+
+        <label>1. Какой дизайн вы хотите?</label>
+        <select id="design" required>
+          <option value="">-- Выберите стиль --</option>
+          <option value="Минималистичный">1.1 Минималистичный</option>
+          <option value="Красочный">1.2 Красочный</option>
+          <option value="Средний">1.3 Средний</option>
+        </select>
+
+        <label>2. Сколько у вас учеников?</label>
+        <input type="number" id="students" min="1" placeholder="Например, 14" required />
+
+        <label>3. Какая цена у вашей виньетки (сом)?</label>
+        <input type="number" id="price" min="0" placeholder="Например, 850" required />
+
+        <label>4. Какой фон вы предпочитаете?</label>
+        <select id="background" required>
+          <option value="">-- Выберите фон --</option>
+          <option value="Классический">Классический</option>
+          <option value="Школьный">Школьный</option>
+          <option value="Однотонный">Однотонный</option>
+          <option value="По согласованию">По согласованию</option>
+        </select>
+
+        <label>5. Какой у вас класс?</label>
+        <select id="class" required>
+          <option value="">-- Выберите класс --</option>
+          <option value="Садик">Садик</option>
+          <option value="1">1</option>
+          <option value="4">4</option>
+          <option value="9">9</option>
+          <option value="11">11</option>
+        </select>
+
+        <label>6. Какой у вас формат виньетки?</label>
+        <select id="format" required>
+          <option value="">-- Выберите формат --</option>
+          <option value="A4">A4</option>
+          <option value="Маленький">Маленький</option>
+        </select>
+
+        <label>7. Дополнительные пожелания:</label>
+        <textarea id="notes" rows="3" placeholder="Например: Надпись — 9-Б класс, 2025 год. Рамка золотая и т.д."></textarea>
+
+        <label>
+          <input type="checkbox" id="agreement" required />
+          Я подтверждаю, что вся информация указана верно, и ознакомлен(а) со следующими условиями:<br /><br />
+          После отправки в печать заказ отменить или внести изменения невозможно. Мы не несем ответственности за ошибки, допущенные при заполнении формы. Пожалуйста, тщательно проверяйте все данные (имена, количество учеников, класс, фон и т.д.) перед отправкой.<br /><br />
+          Я осознаю, что если заказ будет выполнен по предоставленным данным, я обязан(а) его оплатить и забрать.
+
+          Мен көрсөтүлгөн бардык маалыматтар туура экенине ынандым жана төмөнкү шарттар менен тааныштым:<br /><br />
+          Заказ басмаканага жөнөтүлгөндөн кийин аны жокко чыгарууга же өзгөртүүгө болбойт. Форманы толтурууда кетирилген каталар үчүн биз жооп бербейбиз. Маалыматтарды (аты-жөнү, окуучулардын саны, класс, фон ж.б.) жиберүүдөн мурун жакшылап текшериңиз.<br /><br />
+          Эгерде заказ мен берген маалыматтарга ылайык даярдалса, мен аны сөзсүз түрдө алам жана төлөйм.
+          </label>
+          
+        </label>
+
+        <div class="center-button">
+          <button type="submit">Отправить заказ</button>
+        </div>
+      </form>
+    </section>
+
+    <section>
+      <h2>Контакты</h2>
+      <p>📞WhatsApp (МегаКом): <strong>0552 10 15 20</strong></p>
+      <p>📱 (Билайн): <strong>0779 72 85 32</strong></p>
+      <p>📸 Instagram: <strong>vectorvision_kg</strong></p>
+    </section>
+  </main>
+
+  <footer>
+    © 2025 Виньетки Онлайн. Все права защищены.
+  </footer>
+
+  <script>
+    function sendToWhatsApp() {
+      const name = document.getElementById('name').value.trim();
+      const school = document.getElementById('school').value.trim();
+      const design = document.getElementById('design').value;
+      const students = document.getElementById('students').value;
+      const price = document.getElementById('price').value;
+      const background = document.getElementById('background').value;
+      const classLevel = document.getElementById('class').value;
+      const format = document.getElementById('format').value;
+      const notes = document.getElementById('notes').value.trim();
+      const agreement = document.getElementById('agreement');
+
+      if (!name || !school || !design || !students || !price || !background || !classLevel || !format) {
+        alert('Пожалуйста, заполните все обязательные поля.');
+        return;
+      }
+
+      if (!agreement.checked) {
+        alert('Пожалуйста, прочитайте соглашение и подтвердите, что вы согласны.');
+        return;
+      }
+
+      const message =
+        `Заказ виньетки:%0A` +
+        `👩‍🏫 Учитель: ${encodeURIComponent(name)}%0A` +
+        `🏫 Школа: ${encodeURIComponent(school)}%0A` +
+        `🎨 Дизайн: ${encodeURIComponent(design)}%0A` +
+        `👥 Ученики: ${encodeURIComponent(students)}%0A` +
+        `💰 Цена: ${encodeURIComponent(price)} сом%0A` +
+        `🖼 Фон: ${encodeURIComponent(background)}%0A` +
+        `🏫 Класс: ${encodeURIComponent(classLevel)}%0A` +
+        `📀 Формат: ${encodeURIComponent(format)}%0A` +
+        `✍️ Пожелания: ${encodeURIComponent(notes)}`;
+
+      const phoneNumber = '996552101520';
+      const url = `https://wa.me/${phoneNumber}?text=${message}`;
+      window.open(url, '_blank');
+    }
+  </script>
+</body>
+</html>
